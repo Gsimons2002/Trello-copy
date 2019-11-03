@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+<link rel="stylesheet" type="text/css" href="trelloCss.css">
+<link rel="stylesheet" type="JavaScript" href="trelloJS.js">
   <head>
     <meta charset="utf-8">
     <title>Trello Copy</title>
+    <center>
+      <h1 class="titleHeader">Trello Copy</h1>
+    </center>
   </head>
   <body>
-
-
 <!-- TO DO -->
 <div class="toDo">
 <p class="toDoHeader">To Do</p>
-<div>
+<div id="myDIV">
   <center>
-    <p id="toDo1" class="card">card1</p>
-    <p id="toDo2" class="card">card2</p>
-    <p id="toDo3" class="card">card3</p>
-    <p id="toDo4" class="card">card4</p>
-    <p id="toDo5" class="card">card5</p>
-    <p id="toDo6" class="card">card6</p>
-    <p id="toDo7" class="card">card7</p>
-    <p id="toDo8" class="card">card8</p>
-    <p id="toDo9" class="card">card9</p>
-    <p id="toDo9" class="card">card10</p>
-</center>
-</div>
-<div>
-  <center>
-  <input class="Button" type="button" value="Add Card"></input>
+    <ul id="myUL">
+
+    </ul>
+  </div>
+  <div>
+    <center>
+    <input type="text" id="myInput" placeholder="Add Card">
+    <br>
+  <button onclick="newElement()" class="Button">Add</button>
 </center>
 </div>
 </div>
@@ -34,196 +31,60 @@
 <!-- DOING -->
 <div class="doing">
 <p class="doingHeader">Doing</p>
-<div>
+<div id="myDIV">
   <center>
-    <p id="doing1" class="card">card11</p>
-    <p id="doing2" class="card">card12</p>
-    <p id="doing3" class="card">card13</p>
-    <p id="doing4" class="card">card14</p>
-    <p id="doing5" class="card">card15</p>
-    <p id="doing6" class="card">card16</p>
-    <p id="doing7" class="card">card17</p>
-    <p id="doing8" class="card">card18</p>
-    <p id="doing9" class="card">card19</p>
-    <p id="doing10" class="card">card20</p>
-</center>
-</div>
-<div>
-  <center>
-  <input class="Button" type="button" value="Add Card"></input>
-</center>
-</div>
-</div>
+    <ul id="myUL">
 
+    </ul>
+  </div>
+</div>
 <!-- DONE -->
 <div class="done">
 <p class="doneHeader">Done</p>
-<!-- CARDS -->
-<div>
+<div id="myDIV">
   <center>
-<p id="done1" class="card">card21</p>
-<p id="done2" class="card">card22</p>
-<p id="done3" class="card">card23</p>
-<p id="done4" class="card">card24</p>
-<p id="done5" class="card">card25</p>
-<p id="done6" class="card">card26</p>
-<p id="done7" class="card">card27</p>
-<p id="done8" class="card">card28</p>
-<p id="done9" class="card">card29</p>
-<p id="done10" class="card">card30</p>
-</center>
+    <ul id="myUL">
+
+    </ul>
+  </div>
 </div>
-<div>
-  <center>
-  <input class="Button" type="button" value="Add Card"></input>
-</center>
-</div>
-</div>
-<!-- :) -->
-</div>
-
-
-
-
-
 </body>
-
-
-
-<style>
-/*TO DO LIST*/
-.toDo {
-  background-color: #F1F1F1;
-  width: 20%;
-  height: auto;
-  position: absolute;
-  right: 70%;
-  top: 5%;
-  border-radius: 5px;
-  border: solid 4px lightgreen;
-}
-.toDoHeader {
-  font-family: sans-serif;
-  font-size: 150%;
-  color: black;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  text-align: center;
-}
-/*DOING LIST*/
-.doing {
-  background-color: #F1F1F1;
-  width: 20%;
-  height: auto;
-  position: absolute;
-  right: 45%;
-  top: 5%;
-  border-radius: 5px;
-  border: solid 4px lightblue;
-}
-.doingHeader {
-  font-family: sans-serif;
-  font-size: 150%;
-  color: black;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  text-align: center;
-}
-/*DONE LIST*/
-.done {
-  background-color: #F1F1F1;
-  width: 20%;
-  height: auto;
-  position: absolute;
-  right: 20%;
-  top: 5%;
-  border-radius: 5px;
-  border: solid 4px #E57375;
-}
-.doneHeader {
-  font-family: sans-serif;
-  font-size: 150%;
-  color: black;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  text-align: center;
-}
-/*CARDS*/
-.card {
-  font-family: sans-serif;
-  font-size: 120%;
-  color: black;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  text-align: center;
-  background-color: white;
-  width: 75%;
-  height: 75%;
-  word-wrap: break-word;
-  border-radius: 2px;
-  border: solid 2px #CDCDCD;
-}
-
-/* REMOVE SELECTION BORDER*/
-textarea:focus, input:focus{
-    outline: none;
-}
-/*BUTTON*/
-.Button {
-
-    background-color: white;
-    /* Font */
-    font-family: sans-serif;
-    font-weight: 100;
-    font-size: 15px;
-
-    /* Text Appearance */
-    color: #3E3E3E;
-    text-align: center;
-
-    /* Outline Appearance */
-    border: solid 2px #3E3E3E;
-    padding: 10px 20px;
-    margin-bottom: 5px;
-}
-
-    /* Apperance when mouse hovers over button */
-.Button:hover {
-background-color: #3E3E3E;
-color: white;
-}
-
-    /* Appearance when button is clicked */
-.Button:active {
-    font-size: 14px;
-}
-
-
-
-
-
-
-</style>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
+/*Create a new list item when clicking on the "Add" button */
+/* Credit: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_todo */
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
 
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
 
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
 
-
-
-
+/*Drag and Drop*/
+$( function() {
+  $( "#sortable1, #sortable2, #sortable3" ).sortable({
+    connectWith: ".connectedSortable"
+  }).disableSelection();
+} );
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </html>
