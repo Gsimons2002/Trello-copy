@@ -5,7 +5,7 @@
   height: auto;
   position: absolute;
   right: 70%;
-  top: 5%;
+  top: 10%;
   border-radius: 5px;
   border: solid 4px lightgreen;
 }
@@ -23,8 +23,8 @@
   width: 20%;
   height: auto;
   position: absolute;
-  right: 45%;
-  top: 5%;
+  right: 40%;
+  top: 10%;
   border-radius: 5px;
   border: solid 4px lightblue;
 }
@@ -42,8 +42,8 @@
   width: 20%;
   height: auto;
   position: absolute;
-  right: 20%;
-  top: 5%;
+  right: 10%;
+  top: 10%;
   border-radius: 5px;
   border: solid 4px #E57375;
 }
@@ -93,18 +93,22 @@ textarea:focus, input:focus{
     padding: 10px 20px;
     margin-bottom: 5px;
     width: 75%;
+    cursor: pointer;
 }
 
     /* Apperance when mouse hovers over button */
 .Button:hover {
 background-color: #3E3E3E;
 color: white;
+  cursor: pointer;
 }
 
     /* Appearance when button is clicked */
 .Button:active {
     font-size: 14px;
+      cursor: pointer;
 }
+
 /* style for input tag */
 input{
   margin: 0;
@@ -112,4 +116,53 @@ input{
  border-radius: 0;
  width: 75%;
  font-size: 16px;
+}
+
+/* Remove margins and padding from the list */
+ul {
+  margin: 10%;
+  padding: 0;
+}
+
+/* Style the list items */
+ul li{
+  background-color: lightgrey;
+  font-size: 16px;
+   transition: 0.2s;
+}
+
+ul li:hover{
+  background-color: grey;
+}
+/*Style for body tag*/
+body{
+  background-color: #00A16B;
+}
+
+
+
+/*Style for the header tag creating the title*/
+.titleHeader{
+  font-size: 48px;
+  color: #ED8D02;
+  margin: 20px;
+}
+
+
+/* Drag and Drop */
+#sortable1, #sortable2, #sortable3 {
+  border: 1px solid #eee;
+  width: 142px;
+  min-height: 20px;
+  list-style-type: none;
+  margin: 0;
+  padding: 5px 0 0 0;
+  float: left;
+  margin-right: 10px;
+}
+#sortable1 li, #sortable2 li, #sortable3 li{
+  margin: 0 5px 5px 5px;
+  padding: 5px;
+  font-size: 1.2em;
+  width: 120px;
 }

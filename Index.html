@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <link rel="stylesheet" type="text/css" href="trelloCss.css">
-<link rel="stylesheet" type="text/css" href="trelloJS.js">
+<link rel="stylesheet" type="JavaScript" href="trelloJS.js">
   <head>
     <meta charset="utf-8">
     <title>Trello Copy</title>
+    <center>
+      <h1 class="titleHeader">Trello Copy</h1>
+    </center>
   </head>
   <body>
-
-
 <!-- TO DO -->
 <div class="toDo">
 <p class="toDoHeader">To Do</p>
 <div id="myDIV">
   <center>
-    <ul id="card">
+    <ul id="myUL">
 
     </ul>
-    <input type="text" id="myInput" placeholder="Title...">
+  </div>
+  <div>
+    <center>
+    <input type="text" id="myInput" placeholder="Add Card">
     <br>
-    <button onclick="newElement()" class="Button">Add</button>
+  <button onclick="newElement()" class="Button">Add</button>
+</center>
 </div>
 </div>
 
@@ -28,31 +33,58 @@
 <p class="doingHeader">Doing</p>
 <div id="myDIV">
   <center>
-    <ul id="card">
+    <ul id="myUL">
 
     </ul>
-    <input type="text" id="myInput" placeholder="Title...">
-    <br>
-    <button onclick="newElement()" class="Button">Add</button>
-</center>
-
-</div>
+  </div>
 </div>
 <!-- DONE -->
 <div class="done">
 <p class="doneHeader">Done</p>
-<!-- CARDS -->
 <div id="myDIV">
   <center>
-<ul id="card">
+    <ul id="myUL">
 
-</ul>
-<input type="text" id="myInput" placeholder="Title...">
-<br>
-<button onclick="newElement()" class="Button">Add</button>
-</center>
-</div>
+    </ul>
+  </div>
 </div>
 </body>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+/*Create a new list item when clicking on the "Add" button */
+/* Credit: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_todo */
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
 
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+
+/*Drag and Drop*/
+$( function() {
+  $( "#sortable1, #sortable2, #sortable3" ).sortable({
+    connectWith: ".connectedSortable"
+  }).disableSelection();
+} );
+</script>
 </html>
