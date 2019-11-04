@@ -3,12 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sortable</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+  <title>brello</title>
   <style>
   #sortable1, #sortable2, #sortable3 {
-    border: 1px solid #eee;
+    font-family: 'Trebuchet MS', Helvetica;
+    border: 1px solid lightgray;
     width: 142px;
     min-height: 20px;
     list-style-type: none;
@@ -18,11 +17,71 @@
     margin-right: 10px;
   }
   #sortable1 li, #sortable2 li, #sortable3 li{
+    font-family: 'Trebuchet MS', Helvetica;
     margin: 0 5px 5px 5px;
     padding: 5px;
     font-size: 1.2em;
     width: 120px;
+    border: 1px solid #eee;
   }
+  .column{
+    float: left;
+    margin: -15px 20px 15px 0;
+}
+h2 {
+  font-family: 'Trebuchet MS', Helvetica;
+  color: Gray;
+}
+.cardName {
+  font-family: 'Trebuchet MS', Helvetica;
+  position: fixed;
+  text-align: center;
+  width: 20%;
+  left: 78%;
+  bottom: 95%;
+  border-color: gray;
+}
+.cardCreate {
+  font-family: 'Trebuchet MS', Helvetica;
+  position: fixed;
+  text-align: center;
+  width: 20%;
+  left: 78%;
+  bottom: 90%;
+  border-color: lightblue;
+  background-color: white;
+}
+.controls {
+  font-family: 'Trebuchet MS', Helvetica;
+  position: fixed;
+  text-align: center;
+  width: 20%;
+  left: 78%;
+  bottom: 85%;
+  border-color: orange;
+  background-color: white;
+}
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+outline: none;
+}
+/* Show red borders when filled, but invalid */
+input:not(:placeholder-shown) {
+  border-color: salmon;
+}
+/* Show green borders when valid */
+input:valid {
+  border-color: lightgreen;
+}
+.watermark {
+  position: fixed;
+  font-family: 'Trebuchet MS', Helvetica;
+  color: lightgray;
+  bottom: -2%;
+}
+/* DRAGNDROP STUFF */
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -31,35 +90,98 @@
     $( "#sortable1, #sortable2, #sortable3" ).sortable({
       connectWith: ".connectedSortable"
     }).disableSelection();
-  } );
+  });
   </script>
 </head>
 <body>
-
+<!-- LISTS -->
+<div class="column">
+    <h2 style="text-align: center;">To Do</h2>
 <ul id="sortable1" class="connectedSortable">
-  <li class="ui-state-default">Item 1</li>
-  <li class="ui-state-default">Item 2</li>
-  <li class="ui-state-default">Item 3</li>
-  <li class="ui-state-default">Item 4</li>
-  <li class="ui-state-default">Item 5</li>
 </ul>
-
+</div>
+<div class="column">
+    <h2 style="text-align: center;">Doing</h2>
 <ul id="sortable2" class="connectedSortable">
-  <li class="ui-state-highlight">Item 1</li>
-  <li class="ui-state-highlight">Item 2</li>
-  <li class="ui-state-highlight">Item 3</li>
-  <li class="ui-state-highlight">Item 4</li>
-  <li class="ui-state-highlight">Item 5</li>
 </ul>
-
+</div>
+<div class="column">
+    <h2 style="text-align: center;">Done</h2>
 <ul id="sortable3" class="connectedSortable">
-  <li class="ui-state-highlight">Item 1</li>
-  <li class="ui-state-highlight">Item 2</li>
-  <li class="ui-state-highlight">Item 3</li>
-  <li class="ui-state-highlight">Item 4</li>
-  <li class="ui-state-highlight">Item 5</li>
 </ul>
-
-
+</div>
+<input class="cardName" id="cardName" type="text" placeholder="Card Name" required pattern=".*\S.*">
+<button class="cardCreate" onclick="addCard()">Create Card</button>
+<button class="controls" onclick="controlsMenu()">Controls</button>
+<p class="watermark">www.brello.com</p>
+<script>
+//Starting values
+var ul;
+var li;
+var liNum = 0;
+//Creates a card
+function addCard() {
+//Checks if card name is valid (green border)
+  var inpObj = document.getElementById("cardName");
+  if (!inpObj.checkValidity()) {
+    return; //If true return the function
+  }
+  //Creates a new li
+  ul = document.getElementById("sortable1");
+  li = document.createElement("li");
+  li.appendChild(document.createTextNode(document.getElementById("cardName").value));
+  li.onclick = editCard; //Adds onclick="editCard()" to the card
+  liNum = liNum + 1; //Adds 1 to liNum every time a card is created
+  li.id = liNum; //Sets the id for the card to liNum (This means the first card you make have an Id of 1, the second 2, and so forth)
+  ul.appendChild(li);
+}
+//Key press detection
+var keys = {};
+window.onkeyup = function(e) { keys[e.keyCode] = false; }
+window.onkeydown = function(e) { keys[e.keyCode] = true; }
+//Removes the card with the id of the card you clicked
+function editCard() {
+    //Delete card (Shift+Click)
+    if (event.shiftKey) {
+      document.getElementById(this.id).remove();
+    }
+    //Color card red
+    if (keys[82]) {
+      document.getElementById(this.id).style.borderColor = "red";
+    }
+    //Color card orange
+    if (keys[79]) {
+      document.getElementById(this.id).style.borderColor = "orange";
+    }
+    //Color card yellow
+    if (keys[89]) {
+      document.getElementById(this.id).style.borderColor = "yellow";
+    }
+    //Color card green
+    if (keys[71]) {
+      document.getElementById(this.id).style.borderColor = "green";
+    }
+    //Color card blue
+    if (keys[66]) {
+      document.getElementById(this.id).style.borderColor = "blue";
+    }
+    //Color card purple
+    if (keys[80]) {
+      document.getElementById(this.id).style.borderColor = "purple";
+    }
+    //Color card magenta
+    if (keys[77]) {
+      document.getElementById(this.id).style.borderColor = "magenta";
+    }
+    //Color card default
+    if (keys[68]) {
+      document.getElementById(this.id).style.borderColor = "#eee";
+    }
+}
+//Shows the control menu
+function controlsMenu() {
+  alert("Delete Card: Shift-Click a card\nColor Card Red: Click+r a card\nColor Card Orange: Click+o a card\nColor Card Yellow: Click+y a card\nColor Card Green: Click+g a card\nColor Card Blue: Click+b a card\nColor Card Purple: Click+p a card\nColor Card Magenta: Click+m a card\nColor Card Default (Gray): Click+d a card")
+}
+</script>
 </body>
 </html>
