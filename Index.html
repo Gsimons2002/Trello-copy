@@ -8,60 +8,135 @@
   <style>
   #sortable1, #sortable2, #sortable3 {
     font-family: 'Trebuchet MS', Helvetica;
-    border: 1px solid lightgray;
-    width: 142px;
+    color: white;
+    border: 3px solid rgba(255, 212, 128);
+    width: 222px;
     min-height: 20px;
     list-style-type: none;
     margin: 0;
-    padding: 5px 0 0 0;
+    padding: 5px 5px 0px 0px;
     float: left;
     margin-right: 10px;
+    background-color: rgba(255, 230, 128, 0.5);
   }
+  /* dragable list items */
   #sortable1 li, #sortable2 li, #sortable3 li{
     font-family: 'Trebuchet MS', Helvetica;
-    margin: 0 5px 5px 5px;
+    margin: 0px 5px 5px 5px;
     padding: 5px;
     font-size: 1.2em;
-    width: 120px;
-    border: 1px solid #eee;
+    width: 90%;
+    border: 1px solid white;
+    word-wrap: break-word;
+    background-color: rgba(0, 0, 0, 0.0);
   }
+
+  /* Style css for the list items: done by Greg */
+  /* #sortable1 li:hover{
+    transition: 0.5s;
+    background-color: #CDCDCD;
+  }
+  #sortable2 li:hover{
+    transition: 0.5s;
+    background-color: #CDCDCD;
+  }
+  #sortable3 li:hover{
+    transition: 0.5s;
+    background-color: #CDCDCD;
+  } */
+
   .column{
     float: left;
-    margin: -15px 20px 15px 0;
+    margin: -15px 0 15px 7%;
 }
+
 h2 {
   font-family: 'Trebuchet MS', Helvetica;
-  color: Gray;
+  color: white;
+  font-size: 28px;
 }
+
 .cardName {
   font-family: 'Trebuchet MS', Helvetica;
+  font-size: 200%;
   position: fixed;
   text-align: center;
-  width: 20%;
+  width: 19%;
   left: 78%;
-  bottom: 95%;
-  border-color: gray;
+  bottom: 80%;
+  color: white;
+  border: solid 4px rgba(255, 212, 128);
+  padding: 5px 10px;
+  background-color: rgba(255, 230, 128, 0.5);
+  height: 13%;
 }
+
+/* Apperance when mouse hovers over button */
+.cardCreate:hover {
+background-color: lightblue;
+color: white;
+}
+
 .cardCreate {
   font-family: 'Trebuchet MS', Helvetica;
+  font-size: 200%;
   position: fixed;
   text-align: center;
-  width: 20%;
-  left: 78%;
-  bottom: 90%;
-  border-color: lightblue;
-  background-color: white;
+  width: 10%;
+  left: 78.2%;
+  bottom: 61%;
+  color: white;
+  border: solid 4px rgba(255, 212, 128);
+  padding: 5px 10px;
+  background-color: rgba(255, 230, 128, 0.5);
+  height: 17%
 }
+/* Apperance when mouse hovers over button */
+.cardCreate:hover {
+background-color: lightblue;
+color: white;
+}
+
 .controls {
   font-family: 'Trebuchet MS', Helvetica;
+  font-size: 200%;
   position: fixed;
   text-align: center;
-  width: 20%;
-  left: 78%;
-  bottom: 85%;
-  border-color: orange;
-  background-color: white;
+  width: 20.8%;
+  left: 78.2%;
+  bottom: 44%;
+  color: white;
+  border: solid 4px rgba(255, 212, 128);
+  padding: 5px 10px;
+  background-color: rgba(255, 230, 128, 0.5);
+  height: 15%;
 }
+/* Apperance when mouse hovers over button */
+.controls:hover {
+background-color: orange;
+color: white;
+}
+.deleteAll {
+  font-family: 'Trebuchet MS', Helvetica;
+  font-size: 200%;
+  position: fixed;
+  text-align: center;
+  width: 10%;
+  left: 88.8%;
+  bottom: 61%;
+  color: white;
+  border: solid 4px rgba(255, 212, 128);
+  padding: 5px 10px;
+  background-color: rgba(255, 230, 128, 0.5);
+  height: 17%;
+}
+/* Apperance when mouse hovers over button */
+.deleteAll:hover {
+background-color: salmon;
+color: white;
+}
+
+
 a:focus,
 button:focus,
 input:focus,
@@ -74,14 +149,29 @@ input:not(:placeholder-shown) {
 }
 /* Show green borders when valid */
 input:valid {
-  border-color: lightgreen;
+  border-color: rgba(13, 255, 0);
 }
 .watermark {
   position: fixed;
   font-family: 'Trebuchet MS', Helvetica;
-  color: lightgray;
+  color: white;
   bottom: -2%;
 }
+
+
+
+
+
+
+
+
+/* Done by Greg */
+  body {
+    background-image: url("background.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+  }
 /* DRAGNDROP STUFF */
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -92,36 +182,71 @@ input:valid {
       connectWith: ".connectedSortable"
     }).disableSelection();
   });
+
+
   </script>
 </head>
 <body>
-<!-- LISTS -->
-<div class="column">
-    <h2 style="text-align: center;">To Do</h2>
-<ul id="sortable1" class="connectedSortable">
-</ul>
-</div>
-<div class="column">
-    <h2 style="text-align: center;">Doing</h2>
-<ul id="sortable2" class="connectedSortable">
-</ul>
-</div>
-<div class="column">
-    <h2 style="text-align: center;">Done</h2>
-<ul id="sortable3" class="connectedSortable">
-</ul>
-</div>
+
 <input class="cardName" id="cardName" type="text" placeholder="Card Name" required pattern=".*\S.*">
 <button class="cardCreate" onclick="addCard()">Create Card</button>
 <button class="controls" onclick="controlsMenu()">Controls</button>
+<button class="deleteAll" onclick="deleteAll()">Delete All Cards</button>
+
+
+<!-- LISTS -->
+<div class="column">
+    <h2 style="text-align: center;">To Do</h2>
+    <center>
+<ul id="sortable1" class="connectedSortable">
+</ul>
+</center>
+</div>
+<div class="column">
+    <h2 style="text-align: center;">Doing</h2>
+    <center>
+<ul id="sortable2" class="connectedSortable">
+</ul>
+</center>
+</div>
+<div class="column">
+    <h2 style="text-align: center;">Done</h2>
+    <center>
+<ul id="sortable3" class="connectedSortable">
+</ul>
+</center>
+</div>
+<p style="color: white;" id="debug"></p>
 <p class="watermark">www.brello.com</p>
 <script>
+
+
+//Checks if ENTER is pressed when typing in card name & if so then create card
+$('input').keydown( function( event ) {
+    if ( event.which === 13 ) {
+        addCard()
+        event.preventDefault();
+        return false;
+    }
+});
+
+
+document.getElementById("debug").hidden = true;
+
+
+
+
+
+
+
 //Starting values
 var ul;
 var li;
 var liNum = 0;
+var delNum = 1;
 //Creates a card
 function addCard() {
+  document.getElementById("debug").hidden = true;
 //Checks if card name is valid (green border)
   var inpObj = document.getElementById("cardName");
   if (!inpObj.checkValidity()) {
@@ -134,6 +259,7 @@ function addCard() {
   li.onclick = editCard; //Adds onclick="editCard()" to the card
   liNum = liNum + 1; //Adds 1 to liNum every time a card is created
   li.id = liNum; //Sets the id for the card to liNum (This means the first card you make have an Id of 1, the second 2, and so forth)
+  li.style.borderWidth = "3px";
   ul.appendChild(li);
 }
 //Key press detection
@@ -149,40 +275,72 @@ function editCard() {
     //Color card red
     if (keys[82]) {
       document.getElementById(this.id).style.borderColor = "red";
+      document.getElementById(this.id).style.color = "red";
     }
     //Color card orange
     if (keys[79]) {
-      document.getElementById(this.id).style.borderColor = "orange";
+      document.getElementById(this.id).style.borderColor = "#C4740E";
+      document.getElementById(this.id).style.color = "#C4740E";
     }
     //Color card yellow
     if (keys[89]) {
-      document.getElementById(this.id).style.borderColor = "yellow";
+      document.getElementById(this.id).style.borderColor = "#E2CC17";
+      document.getElementById(this.id).style.color = "#E2CC17";
     }
     //Color card green
     if (keys[71]) {
-      document.getElementById(this.id).style.borderColor = "green";
+      document.getElementById(this.id).style.borderColor = "#54A547";
+      document.getElementById(this.id).style.color = "#54A547";
     }
     //Color card blue
     if (keys[66]) {
-      document.getElementById(this.id).style.borderColor = "blue";
+      document.getElementById(this.id).style.borderColor = "#0C94F7";
+      document.getElementById(this.id).style.color = "#0C94F7";
     }
     //Color card purple
     if (keys[80]) {
-      document.getElementById(this.id).style.borderColor = "purple";
+      document.getElementById(this.id).style.borderColor = "#9C56F5";
+      document.getElementById(this.id).style.color = "#9C56F5";
     }
     //Color card magenta
     if (keys[77]) {
       document.getElementById(this.id).style.borderColor = "magenta";
+      document.getElementById(this.id).style.color = "magenta";
     }
     //Color card default
     if (keys[68]) {
-      document.getElementById(this.id).style.borderColor = "#eee";
+      document.getElementById(this.id).style.borderColor = "lightgray";
+      document.getElementById(this.id).style.color = "black";
+    }
+    if (keys[49]) {
+      document.getElementById("debug").innerHTML = "Card Number: " + this.id;
+      document.getElementById("debug").hidden = false;
     }
 }
 //Shows the control menu
 function controlsMenu() {
-  alert("Delete Card: Shift-Click a card\nColor Card Red: Click+r a card\nColor Card Orange: Click+o a card\nColor Card Yellow: Click+y a card\nColor Card Green: Click+g a card\nColor Card Blue: Click+b a card\nColor Card Purple: Click+p a card\nColor Card Magenta: Click+m a card\nColor Card Default (Gray): Click+d a card")
+  alert("Delete Card: Shift-Click a card | Debug (Id Identifier): Click+1 a card\nColor Card Red: Click+r a card\nColor Card Orange: Click+o a card\nColor Card Yellow: Click+y a card\nColor Card Green: Click+g a card\nColor Card Blue: Click+b a card\nColor Card Purple: Click+p a card\nColor Card Magenta: Click+m a card\nColor Card Default (Gray): Click+d a card")
 }
+//Deletes all cards
+function deleteAll() {
+  document.getElementById("sortable1").innerHTML = "";
+  document.getElementById("sortable2").innerHTML = "";
+  document.getElementById("sortable3").innerHTML = "";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 </body>
 </html>
