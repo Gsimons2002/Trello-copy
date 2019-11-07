@@ -5,187 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>brello</title>
-  <style>
-  #sortable1, #sortable2, #sortable3 {
-    font-family: 'Trebuchet MS', Helvetica;
-    color: white;
-    border: 3px solid rgba(255, 212, 128);
-    width: 222px;
-    min-height: 20px;
-    list-style-type: none;
-    margin: 0;
-    padding: 5px 5px 0px 0px;
-    float: left;
-    margin-right: 10px;
-    background-color: rgba(255, 230, 128, 0.5);
-  }
-  /* dragable list items */
-  #sortable1 li, #sortable2 li, #sortable3 li{
-    font-family: 'Trebuchet MS', Helvetica;
-    margin: 0px 5px 5px 5px;
-    padding: 5px;
-    font-size: 1.2em;
-    width: 90%;
-    border: 1px solid white;
-    word-wrap: break-word;
-    background-color: rgba(0, 0, 0, 0.0);
-  }
-
-  /* Style css for the list items: done by Greg */
-  /* #sortable1 li:hover{
-    transition: 0.5s;
-    background-color: #CDCDCD;
-  }
-  #sortable2 li:hover{
-    transition: 0.5s;
-    background-color: #CDCDCD;
-  }
-  #sortable3 li:hover{
-    transition: 0.5s;
-    background-color: #CDCDCD;
-  } */
-
-  .column{
-    float: left;
-    margin: -15px 0 15px 7%;
-}
-
-h2 {
-  font-family: 'Trebuchet MS', Helvetica;
-  color: white;
-  font-size: 28px;
-}
-
-.cardName {
-  font-family: 'Trebuchet MS', Helvetica;
-  font-size: 200%;
-  position: fixed;
-  text-align: center;
-  width: 19%;
-  left: 78%;
-  bottom: 80%;
-  color: white;
-  border: solid 4px rgba(255, 212, 128);
-  padding: 5px 10px;
-  background-color: rgba(255, 230, 128, 0.5);
-  height: 13%;
-}
-/* PLACEHOLDER COLOR */
-::placeholder {
-  color: white;
-}
-/* Apperance when mouse hovers over button */
-.cardCreate:hover {
-background-color: lightblue;
-color: white;
-}
-
-.cardCreate {
-  font-family: 'Trebuchet MS', Helvetica;
-  font-size: 200%;
-  position: fixed;
-  text-align: center;
-  width: 10%;
-  left: 78.2%;
-  bottom: 61%;
-  color: white;
-  border: solid 4px rgba(255, 212, 128);
-  padding: 5px 10px;
-  background-color: rgba(255, 230, 128, 0.5);
-  height: 17%
-}
-/* Apperance when mouse hovers over button */
-.cardCreate:hover {
-background-color: lightblue;
-color: white;
-}
-
-.controls {
-  font-family: 'Trebuchet MS', Helvetica;
-  font-size: 200%;
-  position: fixed;
-  text-align: center;
-  width: 20.8%;
-  left: 78.2%;
-  bottom: 44%;
-  color: white;
-  border: solid 4px rgba(255, 212, 128);
-  padding: 5px 10px;
-  background-color: rgba(255, 230, 128, 0.5);
-  height: 15%;
-}
-/* Apperance when mouse hovers over button */
-.controls:hover {
-background-color: orange;
-color: white;
-}
-.deleteAll {
-  font-family: 'Trebuchet MS', Helvetica;
-  font-size: 200%;
-  position: fixed;
-  text-align: center;
-  width: 10%;
-  left: 88.8%;
-  bottom: 61%;
-  color: white;
-  border: solid 4px rgba(255, 212, 128);
-  padding: 5px 10px;
-  background-color: rgba(255, 230, 128, 0.5);
-  height: 17%;
-}
-/* Apperance when mouse hovers over button */
-.deleteAll:hover {
-background-color: salmon;
-color: white;
-}
-a:focus,
-button:focus,
-input:focus,
-textarea:focus {
-outline: none;
-}
-/* Show red borders when filled, but invalid */
-input:not(:placeholder-shown) {
-  border-color: salmon;
-}
-/* Show green borders when valid */
-input:valid {
-  border-color: rgba(13, 255, 0);
-}
-.watermark {
-  position: fixed;
-  font-family: 'Trebuchet MS', Helvetica;
-  color: white;
-  bottom: -2%;
-}
-
-
-
-
-
-
-
-
-/* Done by Greg */
-  body {
-    background-image: url("background.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-  }
-/* DRAGNDROP STUFF */
-  </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#sortable1, #sortable2, #sortable3" ).sortable({
-      connectWith: ".connectedSortable"
-    }).disableSelection();
-  });
-
-
-  </script>
 </head>
 <body>
 
@@ -222,9 +43,10 @@ input:valid {
 <script>
 
 
+
 //Checks if ENTER is pressed when typing in card name & if so then create card
 $('input').keydown( function( event ) {
-    if ( event.which === 13 ) {
+    if (event.which === 13) {
         addCard()
         event.preventDefault();
         return false;
@@ -233,10 +55,6 @@ $('input').keydown( function( event ) {
 
 
 document.getElementById("debug").hidden = true;
-
-
-
-
 
 
 
@@ -329,19 +147,164 @@ function deleteAll() {
   document.getElementById("sortable3").innerHTML = "";
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+$( function() {
+  $( "#sortable1, #sortable2, #sortable3" ).sortable({
+    connectWith: ".connectedSortable"
+  }).disableSelection();
+});
 
 </script>
+<style>
+
+#sortable1, #sortable2, #sortable3 {
+  font-family: 'Trebuchet MS', Helvetica;
+  color: white;
+  border: 3px solid rgba(255, 212, 128);
+  width: 222px;
+  min-height: 20px;
+  list-style-type: none;
+  margin: 0;
+  padding: 5px 5px 0px 0px;
+  float: left;
+  margin-right: 10px;
+  background-color: rgba(255, 230, 128, 0.5);
+}
+/* dragable list items */
+#sortable1 li, #sortable2 li, #sortable3 li{
+  font-family: 'Trebuchet MS', Helvetica;
+  margin: 0px 5px 5px 5px;
+  padding: 5px;
+  font-size: 1.2em;
+  width: 90%;
+  border: 1px solid white;
+  word-wrap: break-word;
+  background-color: rgba(0, 0, 0, 0.0);
+}
+
+.column{
+  float: left;
+  margin: -15px 0 15px 7%;
+}
+
+h2 {
+font-family: 'Trebuchet MS', Helvetica;
+color: white;
+font-size: 28px;
+}
+
+.cardName {
+font-family: 'Trebuchet MS', Helvetica;
+font-size: 200%;
+position: fixed;
+text-align: center;
+width: 19%;
+left: 78%;
+bottom: 80%;
+color: white;
+border: solid 4px rgba(255, 212, 128);
+padding: 5px 10px;
+background-color: rgba(255, 230, 128, 0.5);
+height: 13%;
+}
+/* PLACEHOLDER COLOR */
+::placeholder {
+color: white;
+}
+/* Apperance when mouse hovers over button */
+.cardCreate:hover {
+background-color: lightblue;
+color: white;
+}
+
+.cardCreate {
+font-family: 'Trebuchet MS', Helvetica;
+font-size: 200%;
+position: fixed;
+text-align: center;
+width: 10%;
+left: 78.2%;
+bottom: 61%;
+color: white;
+border: solid 4px rgba(255, 212, 128);
+padding: 5px 10px;
+background-color: rgba(255, 230, 128, 0.5);
+height: 17%
+}
+/* Apperance when mouse hovers over button */
+.cardCreate:hover {
+background-color: lightblue;
+color: white;
+}
+
+.controls {
+font-family: 'Trebuchet MS', Helvetica;
+font-size: 200%;
+position: fixed;
+text-align: center;
+width: 20.8%;
+left: 78.2%;
+bottom: 44%;
+color: white;
+border: solid 4px rgba(255, 212, 128);
+padding: 5px 10px;
+background-color: rgba(255, 230, 128, 0.5);
+height: 15%;
+}
+/* Apperance when mouse hovers over button */
+.controls:hover {
+background-color: orange;
+color: white;
+}
+.deleteAll {
+font-family: 'Trebuchet MS', Helvetica;
+font-size: 200%;
+position: fixed;
+text-align: center;
+width: 10%;
+left: 88.8%;
+bottom: 61%;
+color: white;
+border: solid 4px rgba(255, 212, 128);
+padding: 5px 10px;
+background-color: rgba(255, 230, 128, 0.5);
+height: 17%;
+}
+/* Apperance when mouse hovers over button */
+.deleteAll:hover {
+background-color: salmon;
+color: white;
+}
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+outline: none;
+}
+/* Show red borders when filled, but invalid */
+input:not(:placeholder-shown) {
+border-color: salmon;
+}
+/* Show green borders when valid */
+input:valid {
+border-color: rgba(13, 255, 0);
+}
+.watermark {
+position: fixed;
+font-family: 'Trebuchet MS', Helvetica;
+color: white;
+bottom: -2%;
+}
+
+
+
+/* Done by Greg */
+body {
+  background-image: url("background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+</style>
 </body>
 </html>
